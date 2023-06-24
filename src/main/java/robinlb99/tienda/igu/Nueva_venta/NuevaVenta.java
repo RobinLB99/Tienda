@@ -59,7 +59,7 @@ public class NuevaVenta extends javax.swing.JFrame {
             
             if (!cFinal) {
                 
-                System.out.println("El cliente es: " + cliente.toString());
+//                System.out.println("El cliente es: " + cliente.toString());
 
                 checkConsumidorFinal.setEnabled(false);
                 checkClientExist.setSelected(true);
