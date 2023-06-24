@@ -65,12 +65,15 @@ public class ConfirmarCompra extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     // Tomo un cliente existente o creo uno nuevo.
-                    if (cliente.getId() == 0) {
-                        clt = cliente;
-                        control.crearCliente(clt);
-                    }
                     
-                    if (idTomado != 0) {
+                    if (idTomado == 0) {
+                        
+                        if (cliente.getId() == 0) {
+                            clt = cliente;
+                            control.crearCliente(clt);
+                        }
+                        
+                    } else if (idTomado != 0) {
                         clt = control.buscarCliente(idTomado);
                     }
 //                    System.out.println("\n" + clt.toString());
@@ -94,7 +97,7 @@ public class ConfirmarCompra extends javax.swing.JFrame {
                     pedido.setProductos(productos);
                     pedido.setValorCompra(valorPagar);
                     
-                    System.out.println(pedido.toString());
+//                    System.out.println(pedido.toString());
                     
                     control.crearPedido(pedido);
                     
@@ -114,7 +117,7 @@ public class ConfirmarCompra extends javax.swing.JFrame {
 
                 } catch (Exception ex) {
                     
-                    System.out.println(ex.getMessage());
+//                    System.out.println(ex.getMessage());
                     
                     window.mensaje("Error en la venta!", "error", "Ups! Hubo un error al realizar la venta.");
                     dispose();
@@ -128,6 +131,7 @@ public class ConfirmarCompra extends javax.swing.JFrame {
         btnCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 dispose();
                 window.nuevaVenta(cFinal, idTomado, unidadesARestar);
             }
@@ -321,7 +325,7 @@ public class ConfirmarCompra extends javax.swing.JFrame {
             btnConfirmarCompra.setEnabled(true);
             
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+//            System.out.println(e.getMessage());
             window.mensaje("Error", "error", "El valor a ingresar debe ser numerico");
         }
         
