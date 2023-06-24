@@ -181,7 +181,7 @@ public class SeleccionProductos extends javax.swing.JFrame {
                             
                         } catch (Exception exc) {
                             
-                            System.out.println("Error: " + exc.getMessage());
+//                            System.out.println("Error: " + exc.getMessage());
                             exc.printStackTrace();
                             
                         }
@@ -244,7 +244,7 @@ public class SeleccionProductos extends javax.swing.JFrame {
                         
                     } catch (Exception ex) {
                         
-                        System.out.println(ex);
+//                        System.out.println(ex);
                         
                     }
                     
@@ -292,7 +292,7 @@ public class SeleccionProductos extends javax.swing.JFrame {
                         }
                                                 
                     } catch (Exception ex) {
-                        System.out.println(ex);
+//                        System.out.println(ex);
                     }
                 } else {
                     
@@ -332,7 +332,7 @@ public class SeleccionProductos extends javax.swing.JFrame {
                         
                         
                     } catch (Exception ex) {
-                        System.out.println(ex);
+//                        System.out.println(ex);
                     }
                 } else {
                     
@@ -358,10 +358,10 @@ public class SeleccionProductos extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Codigo
-                System.out.println("Lista de productos actual es: " + listaProductos.toString());
-                System.out.println("La lista de productos seleccionados es: " + productosSeleccionados.toString());
+//                System.out.println("Lista de productos actual es: " + listaProductos.toString());
+//                System.out.println("La lista de productos seleccionados es: " + productosSeleccionados.toString());
                 
-                System.out.println(productosSeleccionados.size());
+//                System.out.println(productosSeleccionados.size());
                 
                 for (ProductoUnidad prod : productosSeleccionados) {
                     
