@@ -30,7 +30,7 @@ public class ConfirmarCompra extends javax.swing.JFrame {
         
         initComponents();
         
-        System.out.println(this.cancelado);
+//        System.out.println(this.cancelado);
         
         if (!this.cancelado) {
             txtRecibe.setText("0");
