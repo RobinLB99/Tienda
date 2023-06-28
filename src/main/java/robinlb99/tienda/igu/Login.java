@@ -3,6 +3,7 @@ package robinlb99.tienda.igu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import robinlb99.tienda.igu.Nueva_venta.VariableTipoUsuario;
 import robinlb99.tienda.logica.LogicController;
 import robinlb99.tienda.logica.Usuario;
 
@@ -14,6 +15,8 @@ public class Login extends javax.swing.JFrame {
     
     Window ventana = new Window();
     LogicController control = new LogicController();
+    
+    private boolean continuar = true;
 
     public Login() {
         initComponents();
@@ -42,20 +45,34 @@ public class Login extends javax.swing.JFrame {
                     for (Usuario user : usuarios) {
                         
                         if (user.getUsuario().equals(usuario) && user.getContrasena().equals(password)) {
+                            // Seteo el valor booleano para verificar si es administrador o no.
+                            VariableTipoUsuario administrador = new VariableTipoUsuario();
+                            administrador.setValor(user.isIsAdministrador());
+                            // Seteo el nombre de usuario.
+                            administrador.setNombreUsuario(user.getUsuario());
                             
                             ventana.mensaje("Bienvenido", "info", "Bienvenido " + user.getUsuario());
-                            System.exit(0); //********
+                            
+                            continuar = false;
+                            
+                            dispose();
+                            ventana.menu();
+                            
                             break;
                             
                         }
                         
                     }
                     
-                    ventana.mensaje("Credenciales invalidas", "warning", "El usuario o contraseña no son correctos");
-                    
-                    txtNombreUsuario.setText("");
-                    txtPassword.setText("");
-                    txtNombreUsuario.grabFocus();
+                    if (continuar) {
+                        
+                        ventana.mensaje("Credenciales invalidas", "warning", "El usuario o contraseña no son correctos");
+
+                        txtNombreUsuario.setText("");
+                        txtPassword.setText("");
+                        txtNombreUsuario.grabFocus();
+                        
+                    }
                     
                 }
                 

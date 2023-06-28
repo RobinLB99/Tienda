@@ -1,17 +1,41 @@
 package robinlb99.tienda.igu;
 
 import java.util.ArrayList;
+import robinlb99.tienda.igu.Nueva_venta.VariableTipoUsuario;
 
 public class MenuPrincipal extends javax.swing.JFrame {
     
     Window window = null;
-
+    VariableTipoUsuario administrador = new VariableTipoUsuario();
+    private boolean esAdministrador;
+    private String nombreUsuario;
+    private String tipoUsuario;
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
+        this.esAdministrador = administrador.getValor();
+        this.nombreUsuario = administrador.getNombreUsuario();
+        
         window = new Window();
         initComponents();
+        
+        if (esAdministrador) {
+            
+            btnGestionarUsuarios.setEnabled(true);
+            tipoUsuario = "Administrador";
+            
+        } else {
+        
+            btnInventario.setEnabled(false);
+            btnGestionarUsuarios.setEnabled(false);
+            tipoUsuario = "Vendedor";
+            
+        }
+        
+        txtNombreUsuario.setText(nombreUsuario);
+        txtTipoUsuario.setText(tipoUsuario);
+        
     }
 
     /**
@@ -32,6 +56,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnRegistroVentas = new javax.swing.JButton();
         btnInventario = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        btnGestionarUsuarios = new javax.swing.JButton();
+        txtNombreUsuario = new javax.swing.JLabel();
+        txtTipoUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,9 +79,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         btnRegistroVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/reporte.png"))); // NOI18N
         btnRegistroVentas.setText("Registro de ventas");
-        btnRegistroVentas.setMaximumSize(new java.awt.Dimension(150, 27));
-        btnRegistroVentas.setMinimumSize(new java.awt.Dimension(150, 27));
-        btnRegistroVentas.setPreferredSize(new java.awt.Dimension(150, 27));
         btnRegistroVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistroVentasActionPerformed(evt);
@@ -77,6 +101,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnGestionarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/grupo-16px.png"))); // NOI18N
+        btnGestionarUsuarios.setText("Gestionar Usuarios");
+        btnGestionarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarUsuariosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -87,7 +119,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(btnRegistroVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                     .addComponent(btnNuevaVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGestionarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(56, 56, 56))
         );
         jPanel3Layout.setVerticalGroup(
@@ -100,9 +133,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(btnGestionarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        txtNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        txtNombreUsuario.setText("Usuario");
+
+        txtTipoUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        txtTipoUsuario.setText("Tipo de usuario");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -111,12 +152,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap()))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtNombreUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtTipoUsuario)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -168,8 +224,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         window.verStock();
     }//GEN-LAST:event_btnInventarioActionPerformed
 
+    private void btnGestionarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGestionarUsuariosActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGestionarUsuarios;
     private javax.swing.JButton btnInventario;
     private javax.swing.JButton btnNuevaVenta;
     private javax.swing.JButton btnRegistroVentas;
@@ -179,5 +240,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel txtNombreUsuario;
+    private javax.swing.JLabel txtTipoUsuario;
     // End of variables declaration//GEN-END:variables
 }
