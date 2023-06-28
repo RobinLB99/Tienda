@@ -16,6 +16,8 @@ import robinlb99.tienda.igu.VerStockProductos.ModificarProducto;
 import robinlb99.tienda.igu.VerStockProductos.NuevoProducto;
 import robinlb99.tienda.igu.VerStockProductos.VerStock;
 import robinlb99.tienda.igu.Ver_ventas.VerVentas;
+import robinlb99.tienda.igu.gestionUsuarios.AgregarUsuario;
+import robinlb99.tienda.igu.gestionUsuarios.ConfirmarNuevoUsuario;
 import robinlb99.tienda.igu.gestionUsuarios.GestionUsuarios;
 import robinlb99.tienda.logica.Cliente;
 import robinlb99.tienda.logica.Producto;
@@ -199,4 +201,25 @@ public class Window {
         gestionarUsuarios.setVisible(true);
     }
     
+    
+    public void agregarUsuario() {
+        AgregarUsuario agregarUsuario = new AgregarUsuario();
+        agregarUsuario.setLocationRelativeTo(null);
+        agregarUsuario.setResizable(false);
+        agregarUsuario.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        agregarUsuario.pack();
+        agregarUsuario.setVisible(true);
+    }
+    
+    
+    public ConfirmarNuevoUsuario confirmarNuevoUsuario(java.awt.Frame parent, boolean modal) {
+        ConfirmarNuevoUsuario confirmarUsuario = new ConfirmarNuevoUsuario(parent, modal);
+        confirmarUsuario.setLocationRelativeTo(null);
+        confirmarUsuario.setResizable(false);
+        confirmarUsuario.setTitle("Confirmar usuario");
+        confirmarUsuario.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        confirmarUsuario.pack();
+        confirmarUsuario.setVisible(true);
+        return confirmarUsuario;
+    }
 }

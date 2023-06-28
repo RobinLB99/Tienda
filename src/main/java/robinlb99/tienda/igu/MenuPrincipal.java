@@ -1,7 +1,7 @@
 package robinlb99.tienda.igu;
 
 import java.util.ArrayList;
-import robinlb99.tienda.igu.Nueva_venta.VariableTipoUsuario;
+import robinlb99.tienda.logica.VariableTipoUsuario;
 
 public class MenuPrincipal extends javax.swing.JFrame {
     

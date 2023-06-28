@@ -1,6 +1,12 @@
 package robinlb99.tienda.igu.gestionUsuarios;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import robinlb99.tienda.igu.Window;
+import robinlb99.tienda.logica.LogicController;
+import robinlb99.tienda.logica.Usuario;
 
 /**
  *
@@ -8,11 +14,33 @@ import robinlb99.tienda.igu.Window;
  */
 public class GestionUsuarios extends javax.swing.JFrame {
     
+    LogicController control = new LogicController();
     Window ventana = new Window();
+    ArrayList<Usuario> listaUsuarios = null;
 
     public GestionUsuarios() {
         
         initComponents();
+        
+        listaUsuarios = control.listaUsuarios();
+        
+        cargarTabla();
+        
+        
+        // Acciones - botones -------------------------------
+        
+        btnAgregarUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                // Ingresar a la ventana de agregar usuario.
+                dispose();
+                ventana.agregarUsuario();
+                
+            }
+            
+        });
+        
         
     }
 
@@ -31,7 +59,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         btnFiltrar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        dataTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,7 +92,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/borrar-24px.png"))); // NOI18N
         jButton1.setText("Borrar filtro");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        dataTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -75,7 +103,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(dataTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,19 +173,51 @@ public class GestionUsuarios extends javax.swing.JFrame {
         this.dispose();
         ventana.menu();
     }//GEN-LAST:event_btnAtrasActionPerformed
-        
+     
+    
+    private void cargarTabla() {
+        // Definir modelo de tabla
+        DefaultTableModel tablaModel = new DefaultTableModel() {
+            // Filas y columnas no editables.
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        // Establecer los nombres de las columnas
+        String titulos[] = {"ID", "Nombre de Usuario", "Contraseña"};
+        tablaModel.setColumnIdentifiers(titulos);
+
+        // Recorrer datos y mostrarlos
+        if (listaUsuarios != null) {
+
+            for (Usuario user : listaUsuarios) {
+
+                Object[] objeto = {user.getId(), user.getUsuario(), user.getContrasena()};
+                tablaModel.addRow(objeto);
+
+            }
+
+        }
+
+        dataTable.setModel(tablaModel);
+
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarUsuario;
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnEliminarUsuario;
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnModificarUsuario;
+    private javax.swing.JTable dataTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

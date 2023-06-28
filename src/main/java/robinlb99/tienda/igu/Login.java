@@ -3,7 +3,7 @@ package robinlb99.tienda.igu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import robinlb99.tienda.igu.Nueva_venta.VariableTipoUsuario;
+import robinlb99.tienda.logica.VariableTipoUsuario;
 import robinlb99.tienda.logica.LogicController;
 import robinlb99.tienda.logica.Usuario;
 
@@ -50,6 +50,7 @@ public class Login extends javax.swing.JFrame {
                             administrador.setValor(user.isIsAdministrador());
                             // Seteo el nombre de usuario.
                             administrador.setNombreUsuario(user.getUsuario());
+                            administrador.setPassword(user.getContrasena());
                             
                             ventana.mensaje("Bienvenido", "info", "Bienvenido " + user.getUsuario());
                             
