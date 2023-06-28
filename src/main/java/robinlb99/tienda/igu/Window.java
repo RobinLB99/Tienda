@@ -16,6 +16,7 @@ import robinlb99.tienda.igu.VerStockProductos.ModificarProducto;
 import robinlb99.tienda.igu.VerStockProductos.NuevoProducto;
 import robinlb99.tienda.igu.VerStockProductos.VerStock;
 import robinlb99.tienda.igu.Ver_ventas.VerVentas;
+import robinlb99.tienda.igu.gestionUsuarios.GestionUsuarios;
 import robinlb99.tienda.logica.Cliente;
 import robinlb99.tienda.logica.Producto;
 
@@ -186,6 +187,16 @@ public class Window {
         session.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         session.pack();
         session.setVisible(true);
+    }
+    
+    
+    public void gestionarUsuarios() {
+        GestionUsuarios gestionarUsuarios = new GestionUsuarios();
+        gestionarUsuarios.setLocationRelativeTo(null);
+        gestionarUsuarios.setResizable(false);
+        gestionarUsuarios.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        gestionarUsuarios.pack();
+        gestionarUsuarios.setVisible(true);
     }
     
 }

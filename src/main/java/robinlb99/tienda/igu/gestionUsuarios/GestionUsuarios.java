@@ -1,10 +1,14 @@
 package robinlb99.tienda.igu.gestionUsuarios;
 
+import robinlb99.tienda.igu.Window;
+
 /**
  *
  * @author ROBINLB99
  */
 public class GestionUsuarios extends javax.swing.JFrame {
+    
+    Window ventana = new Window();
 
     public GestionUsuarios() {
         
@@ -42,6 +46,11 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
         btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/deshacer-16px.png"))); // NOI18N
         btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
 
         btnAgregarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/agregar-usuario.png"))); // NOI18N
         btnAgregarUsuario.setText("Agregar");
@@ -131,6 +140,11 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        this.dispose();
+        ventana.menu();
+    }//GEN-LAST:event_btnAtrasActionPerformed
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarUsuario;

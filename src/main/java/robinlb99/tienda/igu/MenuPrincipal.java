@@ -225,7 +225,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInventarioActionPerformed
 
     private void btnGestionarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarUsuariosActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        window.gestionarUsuarios();
     }//GEN-LAST:event_btnGestionarUsuariosActionPerformed
 
     
