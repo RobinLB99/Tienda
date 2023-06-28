@@ -3,7 +3,7 @@ package robinlb99.tienda.igu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import robinlb99.tienda.logica.VariableTipoUsuario;
+import robinlb99.tienda.logica.VariableDatosUsuario;
 import robinlb99.tienda.logica.LogicController;
 import robinlb99.tienda.logica.Usuario;
 
@@ -46,7 +46,7 @@ public class Login extends javax.swing.JFrame {
                         
                         if (user.getUsuario().equals(usuario) && user.getContrasena().equals(password)) {
                             // Seteo el valor booleano para verificar si es administrador o no.
-                            VariableTipoUsuario administrador = new VariableTipoUsuario();
+                            VariableDatosUsuario administrador = new VariableDatosUsuario();
                             administrador.setValor(user.isIsAdministrador());
                             // Seteo el nombre de usuario.
                             administrador.setNombreUsuario(user.getUsuario());

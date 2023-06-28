@@ -55,12 +55,13 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" pref="260" max="-2" attributes="0"/>
+                          <Component id="txtFiltro" min="-2" pref="260" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnFiltrar" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="130" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="113" max="32767" attributes="0"/>
+                          <Component id="btnBorrarFiltro" min="-2" pref="130" max="-2" attributes="0"/>
+                          <EmptySpace pref="78" max="32767" attributes="0"/>
+                          <Component id="btnActualizarTabla" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -75,10 +76,11 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel2" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="txtFiltro" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btnFiltrar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnBorrarFiltro" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="btnActualizarTabla" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" pref="431" max="32767" attributes="0"/>
@@ -149,19 +151,20 @@
             <Property name="text" type="java.lang.String" value="Filtrar nombre de usuario:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="txtFiltro">
         </Component>
         <Component class="javax.swing.JButton" name="btnFiltrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Filtrar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnBorrarFiltro">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Img/borrar-24px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Borrar filtro"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -186,6 +189,16 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="btnActualizarTabla">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Img/recargar-24px.png"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarTablaActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

@@ -8,7 +8,7 @@ import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
-import robinlb99.tienda.logica.VariableTipoUsuario;
+import robinlb99.tienda.logica.VariableDatosUsuario;
 import robinlb99.tienda.igu.Window;
 
 /**
@@ -18,7 +18,7 @@ import robinlb99.tienda.igu.Window;
 public class ConfirmarNuevoUsuario extends javax.swing.JDialog {
     
     Window ventana = new Window();
-    VariableTipoUsuario credencialesSesion = new VariableTipoUsuario();
+    VariableDatosUsuario credencialesSesion = new VariableDatosUsuario();
 
     /**
      * A return status code - returned if Cancel button has been pressed

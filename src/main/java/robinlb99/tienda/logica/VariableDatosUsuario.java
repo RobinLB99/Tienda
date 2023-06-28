@@ -4,7 +4,7 @@ package robinlb99.tienda.logica;
  *
  * @author ROBINLB99
  */
-public class VariableTipoUsuario {
+public class VariableDatosUsuario {
     
     public static String nombreUsuario;
     public static String contrasena;

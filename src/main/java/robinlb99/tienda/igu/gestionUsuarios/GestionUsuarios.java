@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import robinlb99.tienda.igu.Window;
 import robinlb99.tienda.logica.LogicController;
+import robinlb99.tienda.logica.Producto;
 import robinlb99.tienda.logica.Usuario;
 
 /**
@@ -24,10 +25,55 @@ public class GestionUsuarios extends javax.swing.JFrame {
         
         listaUsuarios = control.listaUsuarios();
         
-        cargarTabla();
+        cargarTabla(false, 0);
         
         
         // Acciones - botones -------------------------------
+        
+        btnFiltrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                if (txtFiltro.getText().isBlank()) {
+                    ventana.mensaje("Filtro vacio", "error", "El campo 'Filtro' esta vacio.");
+                } else {
+                    
+                    try {
+                        
+                        int a = Integer.parseInt(txtFiltro.getText());
+                        
+                        ventana.mensaje("Parametro invalido", "error", "El nombre de ususario a filtrar no puede ser un número.");
+                        
+                    } catch (Exception a) {
+                        
+                        boolean continuar = true;
+                        for (Usuario user : listaUsuarios) {
+                            if (user.getUsuario().equals(txtFiltro.getText())) {
+                                continuar = false;
+                                cargarTabla(true, user.getId());
+                            }
+                        }
+                        
+                        if (continuar) {
+                            ventana.mensaje("Usuario no encontrado", "error", "El usuario a filtrar no ha sido encontrado");
+                            txtFiltro.grabFocus();
+                        }
+                        
+                    }
+                    
+                }
+            }
+        });
+        
+        
+        btnActualizarTabla.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                ventana.gestionarUsuarios();
+            }
+        });
+        
         
         btnAgregarUsuario.addActionListener(new ActionListener() {
             @Override
@@ -55,11 +101,12 @@ public class GestionUsuarios extends javax.swing.JFrame {
         btnAtras = new javax.swing.JButton();
         btnAgregarUsuario = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtFiltro = new javax.swing.JTextField();
         btnFiltrar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnBorrarFiltro = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         dataTable = new javax.swing.JTable();
+        btnActualizarTabla = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,8 +136,9 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
         btnFiltrar.setText("Filtrar");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/borrar-24px.png"))); // NOI18N
-        jButton1.setText("Borrar filtro");
+        btnBorrarFiltro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/borrar-24px.png"))); // NOI18N
+        btnBorrarFiltro.setText("Borrar filtro");
+        btnBorrarFiltro.setEnabled(false);
 
         dataTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,6 +152,13 @@ public class GestionUsuarios extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(dataTable);
+
+        btnActualizarTabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/recargar-24px.png"))); // NOI18N
+        btnActualizarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarTablaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,12 +180,13 @@ public class GestionUsuarios extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 113, Short.MAX_VALUE)))
+                        .addComponent(btnBorrarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addComponent(btnActualizarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -141,9 +197,10 @@ public class GestionUsuarios extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBorrarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnActualizarTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -173,9 +230,13 @@ public class GestionUsuarios extends javax.swing.JFrame {
         this.dispose();
         ventana.menu();
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnActualizarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarTablaActionPerformed
+        
+    }//GEN-LAST:event_btnActualizarTablaActionPerformed
      
     
-    private void cargarTabla() {
+    private void cargarTabla(boolean filtrarTabla, int id) {
         // Definir modelo de tabla
         DefaultTableModel tablaModel = new DefaultTableModel() {
             // Filas y columnas no editables.
@@ -184,21 +245,40 @@ public class GestionUsuarios extends javax.swing.JFrame {
                 return false;
             }
         };
-
+        
         // Establecer los nombres de las columnas
         String titulos[] = {"ID", "Nombre de Usuario", "Contraseña"};
         tablaModel.setColumnIdentifiers(titulos);
 
-        // Recorrer datos y mostrarlos
-        if (listaUsuarios != null) {
+        if (filtrarTabla) {
+            
+            if (id == 0) {
 
-            for (Usuario user : listaUsuarios) {
+                ventana.mensaje("Registro no encontrado", "error", "El registro que usted esta buscando no se encontro\nVerifique que haya ingresado correctamente el dato.");
+                txtFiltro.grabFocus();
 
+            } else {
+
+                Usuario user = control.buscarUsuario(id);
                 Object[] objeto = {user.getId(), user.getUsuario(), user.getContrasena()};
                 tablaModel.addRow(objeto);
 
             }
+            
+        } else {
+            
+            // Recorrer datos y mostrarlos
+            if (listaUsuarios != null) {
 
+                for (Usuario user : listaUsuarios) {
+
+                    Object[] objeto = {user.getId(), user.getUsuario(), user.getContrasena()};
+                    tablaModel.addRow(objeto);
+
+                }
+
+            }
+            
         }
 
         dataTable.setModel(tablaModel);
@@ -207,17 +287,18 @@ public class GestionUsuarios extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizarTabla;
     private javax.swing.JButton btnAgregarUsuario;
     private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnBorrarFiltro;
     private javax.swing.JButton btnEliminarUsuario;
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnModificarUsuario;
     private javax.swing.JTable dataTable;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 }

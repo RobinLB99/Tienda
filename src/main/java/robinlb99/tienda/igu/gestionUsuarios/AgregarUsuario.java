@@ -74,8 +74,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
                             dispose();
                             ventana.gestionarUsuarios();
                         }
-                        
-                        
+                         
                     } else {
                         
                         ventana.mensaje("Contraseña no coincidente", "error", "La contraseña no coincide.\nConfirme que ambos campos sean iguales.");

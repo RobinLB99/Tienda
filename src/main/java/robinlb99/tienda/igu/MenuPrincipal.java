@@ -1,12 +1,12 @@
 package robinlb99.tienda.igu;
 
 import java.util.ArrayList;
-import robinlb99.tienda.logica.VariableTipoUsuario;
+import robinlb99.tienda.logica.VariableDatosUsuario;
 
 public class MenuPrincipal extends javax.swing.JFrame {
     
     Window window = null;
-    VariableTipoUsuario administrador = new VariableTipoUsuario();
+    VariableDatosUsuario administrador = new VariableDatosUsuario();
     private boolean esAdministrador;
     private String nombreUsuario;
     private String tipoUsuario;
