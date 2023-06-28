@@ -15,7 +15,7 @@ import robinlb99.tienda.igu.Window;
  *
  * @author ROBINLB99
  */
-public class ConfirmarNuevoUsuario extends javax.swing.JDialog {
+public class ConfirmarAccionUsuario extends javax.swing.JDialog {
     
     Window ventana = new Window();
     VariableDatosUsuario credencialesSesion = new VariableDatosUsuario();
@@ -34,7 +34,7 @@ public class ConfirmarNuevoUsuario extends javax.swing.JDialog {
     /**
      * Creates new form ConfirmarNuevoUsuario
      */
-    public ConfirmarNuevoUsuario(java.awt.Frame parent, boolean modal) {
+    public ConfirmarAccionUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 

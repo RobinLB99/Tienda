@@ -17,7 +17,7 @@ import robinlb99.tienda.igu.VerStockProductos.NuevoProducto;
 import robinlb99.tienda.igu.VerStockProductos.VerStock;
 import robinlb99.tienda.igu.Ver_ventas.VerVentas;
 import robinlb99.tienda.igu.gestionUsuarios.AgregarUsuario;
-import robinlb99.tienda.igu.gestionUsuarios.ConfirmarNuevoUsuario;
+import robinlb99.tienda.igu.gestionUsuarios.ConfirmarAccionUsuario;
 import robinlb99.tienda.igu.gestionUsuarios.GestionUsuarios;
 import robinlb99.tienda.logica.Cliente;
 import robinlb99.tienda.logica.Producto;
@@ -212,8 +212,8 @@ public class Window {
     }
     
     
-    public ConfirmarNuevoUsuario confirmarNuevoUsuario(java.awt.Frame parent, boolean modal) {
-        ConfirmarNuevoUsuario confirmarUsuario = new ConfirmarNuevoUsuario(parent, modal);
+    public ConfirmarAccionUsuario confirmarAccionUsuario(java.awt.Frame parent, boolean modal) {
+        ConfirmarAccionUsuario confirmarUsuario = new ConfirmarAccionUsuario(parent, modal);
         confirmarUsuario.setLocationRelativeTo(null);
         confirmarUsuario.setResizable(false);
         confirmarUsuario.setTitle("Confirmar usuario");

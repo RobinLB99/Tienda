@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import robinlb99.tienda.igu.Window;
 import robinlb99.tienda.logica.LogicController;
-import robinlb99.tienda.logica.Producto;
 import robinlb99.tienda.logica.Usuario;
 
 /**
@@ -25,7 +24,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         
         listaUsuarios = control.listaUsuarios();
         
-        cargarTabla(false, 0);
+        cargarTabla(false, 0, false);
         
         
         // Acciones - botones -------------------------------
@@ -50,7 +49,8 @@ public class GestionUsuarios extends javax.swing.JFrame {
                         for (Usuario user : listaUsuarios) {
                             if (user.getUsuario().equals(txtFiltro.getText())) {
                                 continuar = false;
-                                cargarTabla(true, user.getId());
+                                cargarTabla(true, user.getId(), true);
+                                btnBorrarFiltro.setEnabled(true);
                             }
                         }
                         
@@ -66,11 +66,21 @@ public class GestionUsuarios extends javax.swing.JFrame {
         });
         
         
+        btnBorrarFiltro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cargarTabla(false, 0, true);
+                btnBorrarFiltro.setEnabled(false);
+                txtFiltro.setText("");
+            }
+        });
+        
+        
         btnActualizarTabla.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                ventana.gestionarUsuarios();
+                cargarTabla(false, 0, true);
+                btnBorrarFiltro.setEnabled(false);
             }
         });
         
@@ -85,6 +95,35 @@ public class GestionUsuarios extends javax.swing.JFrame {
                 
             }
             
+        });
+        
+        
+        btnEliminarUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                if (dataTable.getSelectedRow() != -1) {
+                    
+                    int idUsuario = Integer.parseInt(dataTable.getValueAt(dataTable.getSelectedRow(), 0).toString());
+                    
+                    boolean continuar = ventana.confirmarAccionUsuario(null, true).isConfirm();
+                    
+                    if (continuar) {
+                        
+                        control.eliminarUsuario(idUsuario);
+                        cargarTabla(false, 0, true);
+                        
+                        ventana.mensaje("Usuario eliminado", "info", "El usuario ha sido eliminado con exito.");
+                        
+                    }
+                    
+                } else {
+                    
+                    ventana.mensaje("Usuario no seleccionado", "error", "Debe seleccionar un usuario de la tabla.");
+                    
+                }
+                
+            }
         });
         
         
@@ -236,7 +275,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarTablaActionPerformed
      
     
-    private void cargarTabla(boolean filtrarTabla, int id) {
+    private void cargarTabla(boolean filtrarTabla, int id, boolean recargarListaUsuarios) {
         // Definir modelo de tabla
         DefaultTableModel tablaModel = new DefaultTableModel() {
             // Filas y columnas no editables.
@@ -246,12 +285,16 @@ public class GestionUsuarios extends javax.swing.JFrame {
             }
         };
         
+        if (recargarListaUsuarios) {
+            listaUsuarios = control.listaUsuarios();
+        } 
+        
         // Establecer los nombres de las columnas
         String titulos[] = {"ID", "Nombre de Usuario", "Contraseña"};
         tablaModel.setColumnIdentifiers(titulos);
 
         if (filtrarTabla) {
-            
+
             if (id == 0) {
 
                 ventana.mensaje("Registro no encontrado", "error", "El registro que usted esta buscando no se encontro\nVerifique que haya ingresado correctamente el dato.");
@@ -264,9 +307,9 @@ public class GestionUsuarios extends javax.swing.JFrame {
                 tablaModel.addRow(objeto);
 
             }
-            
+
         } else {
-            
+
             // Recorrer datos y mostrarlos
             if (listaUsuarios != null) {
 
@@ -278,11 +321,11 @@ public class GestionUsuarios extends javax.swing.JFrame {
                 }
 
             }
-            
+
         }
 
         dataTable.setModel(tablaModel);
-
+        
     }
     
     

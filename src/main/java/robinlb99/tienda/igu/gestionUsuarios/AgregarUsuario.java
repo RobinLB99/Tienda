@@ -64,7 +64,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
                         user.setContrasena(password);
                         user.setIsAdministrador(esAdmin);
                         
-                        boolean confirmar = ventana.confirmarNuevoUsuario(null, true).isConfirm();
+                        boolean confirmar = ventana.confirmarAccionUsuario(null, true).isConfirm();
 
                         if (confirmar) {
                             control.crearUsuario(user);
