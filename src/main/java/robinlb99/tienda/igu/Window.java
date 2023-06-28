@@ -170,4 +170,22 @@ public class Window {
         return confirmarAgregadoUnidades;
     }
     
+    public void crearAdministrador() {
+        CrearAdministrador createAdmin = new CrearAdministrador();
+        createAdmin.setLocationRelativeTo(null);
+        createAdmin.setResizable(false);
+        createAdmin.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        createAdmin.pack();
+        createAdmin.setVisible(true);
+    }
+    
+    public void inicioSessionRegistro() {
+        Login session = new Login();
+        session.setLocationRelativeTo(null);
+        session.setResizable(false);
+        session.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        session.pack();
+        session.setVisible(true);
+    }
+    
 }
