@@ -19,8 +19,10 @@ import robinlb99.tienda.igu.Ver_ventas.VerVentas;
 import robinlb99.tienda.igu.gestionUsuarios.AgregarUsuario;
 import robinlb99.tienda.igu.gestionUsuarios.ConfirmarAccionUsuario;
 import robinlb99.tienda.igu.gestionUsuarios.GestionUsuarios;
+import robinlb99.tienda.igu.gestionUsuarios.ModificarUsuario;
 import robinlb99.tienda.logica.Cliente;
 import robinlb99.tienda.logica.Producto;
+import robinlb99.tienda.logica.Usuario;
 
 
 public class Window {
@@ -222,4 +224,15 @@ public class Window {
         confirmarUsuario.setVisible(true);
         return confirmarUsuario;
     }
+    
+    
+    public void modificarUsuario(Usuario user) {
+        ModificarUsuario modUser = new ModificarUsuario(user);
+        modUser.setLocationRelativeTo(null);
+        modUser.setResizable(false);
+        modUser.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        modUser.pack();
+        modUser.setVisible(true);
+    }
+    
 }

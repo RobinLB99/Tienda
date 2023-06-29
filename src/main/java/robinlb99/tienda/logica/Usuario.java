@@ -17,6 +17,9 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String cedula;
+    private String nombres;
+    private String apellidos;
     private String usuario;
     private String contrasena;
     private boolean isAdministrador;
@@ -24,13 +27,16 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(int id, String usuario, String contrasena, boolean isAdministrador) {
+    public Usuario(int id, String cedula, String nombres, String apellidos, String usuario, String contrasena, boolean isAdministrador) {
         this.id = id;
+        this.cedula = cedula;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.isAdministrador = isAdministrador;
     }
-    
+
 
     public int getId() {
         return id;
@@ -39,6 +45,31 @@ public class Usuario implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+    
 
     public String getUsuario() {
         return usuario;

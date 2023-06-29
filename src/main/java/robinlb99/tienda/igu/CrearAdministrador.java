@@ -21,8 +21,17 @@ public class CrearAdministrador extends javax.swing.JFrame {
         btnCrearAdmin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                            
-                if (txtUsuario.getText().isBlank()) {
+                
+                if (txtNombres.getText().isBlank()) {
+                    ventana.mensaje("Campo vacio!", "error", "El campo 'Nombres' esta vacio.");
+                    txtNombres.grabFocus();
+                } else if (txtApellidos.getText().isBlank()) {
+                    ventana.mensaje("Campo vacio!", "error", "El campo 'Apellidos' esta vacio.");
+                    txtApellidos.grabFocus();
+                } else if (txtCedula.getText().isBlank()) {
+                    ventana.mensaje("Campo vacio!", "error", "El campo 'Cedula' esta vacio.");
+                    txtCedula.grabFocus();
+                } else if (txtUsuario.getText().isBlank()) {
                     ventana.mensaje("Campo vacio!", "error", "El campo Nombre de usuario esta vacio.");
                     txtUsuario.grabFocus();
                                         
@@ -37,6 +46,9 @@ public class CrearAdministrador extends javax.swing.JFrame {
                     
                 } else {
                     
+                    String nombres = txtNombres.getText();
+                    String apellidos = txtApellidos.getText();
+                    String cedula = txtCedula.getText();
                     String usuario = txtUsuario.getText();
                     String password = String.valueOf(txtPassword.getPassword());
                     String passwordConfirm = String.valueOf(txtPasswordConfirm.getPassword());
@@ -44,6 +56,9 @@ public class CrearAdministrador extends javax.swing.JFrame {
                     if (passwordConfirm.equals(password)) {
                         
                         Usuario user = new Usuario();
+                        user.setNombres(nombres);
+                        user.setApellidos(apellidos);
+                        user.setCedula(cedula);
                         user.setUsuario(usuario);
                         user.setContrasena(password);
                         user.setIsAdministrador(true);
@@ -52,6 +67,7 @@ public class CrearAdministrador extends javax.swing.JFrame {
                         
                         ventana.mensaje("Usuario creado", "info", "El usuario ha sido creado con exito.");
                         
+                        dispose();
                         ventana.inicioSessionRegistro();
                         
                     } else {
@@ -81,6 +97,12 @@ public class CrearAdministrador extends javax.swing.JFrame {
         btnCrearAdmin = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
         txtPasswordConfirm = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        txtNombres = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtApellidos = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,12 +118,18 @@ public class CrearAdministrador extends javax.swing.JFrame {
 
         btnCrearAdmin.setText("Crear usuario");
 
+        jLabel5.setText("Ingrese sus nombres:");
+
+        jLabel6.setText("Ingrese sus apellidos:");
+
+        jLabel7.setText("Ingrese su numero de cedula:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(60, 60, 60)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnCrearAdmin)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,12 +137,30 @@ public class CrearAdministrador extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPasswordConfirm, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                    .addComponent(txtPasswordConfirm, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNombres)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtApellidos)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -128,7 +174,7 @@ public class CrearAdministrador extends javax.swing.JFrame {
                 .addComponent(txtPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCrearAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -141,9 +187,9 @@ public class CrearAdministrador extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,8 +213,14 @@ public class CrearAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtNombres;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JPasswordField txtPasswordConfirm;
     private javax.swing.JTextField txtUsuario;

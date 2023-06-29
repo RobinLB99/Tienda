@@ -8,12 +8,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     Window window = null;
     VariableDatosUsuario administrador = new VariableDatosUsuario();
     private boolean esAdministrador;
+    private String nombres;
+    private String apellidos;
     private String nombreUsuario;
     private String tipoUsuario;
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
+        this.nombres = administrador.getNombres();
+        this.apellidos = administrador.getApellidos();
         this.esAdministrador = administrador.getValor();
         this.nombreUsuario = administrador.getNombreUsuario();
         
@@ -33,7 +37,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             
         }
         
-        txtNombreUsuario.setText(nombreUsuario);
+        txtUsuario.setText(nombres + " " + apellidos);
         txtTipoUsuario.setText(tipoUsuario);
         
     }
@@ -57,7 +61,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnInventario = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnGestionarUsuarios = new javax.swing.JButton();
-        txtNombreUsuario = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JLabel();
         txtTipoUsuario = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -140,8 +144,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        txtNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        txtNombreUsuario.setText("Usuario");
+        txtUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        txtUsuario.setText("Usuario");
 
         txtTipoUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtTipoUsuario.setText("Tipo de usuario");
@@ -159,13 +163,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(txtNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addComponent(txtTipoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtTipoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -174,15 +175,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(44, 44, 44)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtNombreUsuario)
+                        .addComponent(txtTipoUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtTipoUsuario))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtUsuario)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -253,7 +254,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel txtNombreUsuario;
     private javax.swing.JLabel txtTipoUsuario;
+    private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

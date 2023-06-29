@@ -127,6 +127,28 @@ public class GestionUsuarios extends javax.swing.JFrame {
         });
         
         
+        btnModificarUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                if (dataTable.getSelectedRow() != -1) {
+                    
+                    int idUser = Integer.parseInt(dataTable.getValueAt(dataTable.getSelectedRow(), 0).toString());
+                    
+                    Usuario user = control.buscarUsuario(idUser);
+                    
+                    dispose();
+                    ventana.modificarUsuario(user);
+                    
+                } else {
+                    
+                    ventana.mensaje("Usuario no seleccionado", "error", "Debe seleccionar un usuario de la tabla");
+                    
+                }
+                
+            }
+        });
+        
     }
 
     @SuppressWarnings("unchecked")

@@ -46,11 +46,13 @@ public class Login extends javax.swing.JFrame {
                         
                         if (user.getUsuario().equals(usuario) && user.getContrasena().equals(password)) {
                             // Seteo el valor booleano para verificar si es administrador o no.
-                            VariableDatosUsuario administrador = new VariableDatosUsuario();
-                            administrador.setValor(user.isIsAdministrador());
-                            // Seteo el nombre de usuario.
-                            administrador.setNombreUsuario(user.getUsuario());
-                            administrador.setPassword(user.getContrasena());
+                            VariableDatosUsuario UserSession = new VariableDatosUsuario();
+                            UserSession.setValor(user.isIsAdministrador());
+                            // Seteo las credenciales del usuario.
+                            UserSession.setNombres(user.getNombres());
+                            UserSession.setApellidos(user.getApellidos());
+                            UserSession.setNombreUsuario(user.getUsuario());
+                            UserSession.setPassword(user.getContrasena());
                             
                             ventana.mensaje("Bienvenido", "info", "Bienvenido " + user.getUsuario());
                             
