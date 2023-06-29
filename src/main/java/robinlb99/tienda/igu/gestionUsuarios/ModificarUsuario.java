@@ -124,6 +124,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
                     
                 } else {
 
+                    // Pide confirmacion mediante usuario y contraseña del actual administrador.
                     boolean confirmar = ventana.confirmarAccionUsuario(null, true).isConfirm();
 
                     if (confirmar) {

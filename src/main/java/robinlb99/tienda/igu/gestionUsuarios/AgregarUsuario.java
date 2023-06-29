@@ -54,6 +54,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
                     if (passwordConfirm.equals(password)) {
                         
                         Usuario user = new Usuario();
+                        
                         int tipoUsuario = cboxTipoUsuario.getSelectedIndex();
                         boolean esAdmin;
                         
@@ -70,6 +71,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
                         user.setContrasena(password);
                         user.setIsAdministrador(esAdmin);
                         
+                        // Pide confirmacion mediante usuario y contraseña del actual administrador.
                         boolean confirmar = ventana.confirmarAccionUsuario(null, true).isConfirm();
 
                         if (confirmar) {

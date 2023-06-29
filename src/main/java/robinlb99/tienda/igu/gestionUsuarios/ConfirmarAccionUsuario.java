@@ -49,6 +49,8 @@ public class ConfirmarAccionUsuario extends javax.swing.JDialog {
             }
         });
         
+        // Confirma los cambios mediante usuario y contrasena del administrador actual 
+        // y establece un valor booleano para ser retornado.
         btnConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,6 +91,7 @@ public class ConfirmarAccionUsuario extends javax.swing.JDialog {
             
         });
         
+        // Cancela la accion y no permite continuar con la accion.
         btnCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -255,8 +258,9 @@ public class ConfirmarAccionUsuario extends javax.swing.JDialog {
         dispose();
     }
 
+    // Devuelve la respuesta del usuario (true si acepta, false si no)
     public boolean isConfirm() {
-        return confirm; // Devuelve la respuesta del usuario (true si acepta, false si no)
+        return confirm; 
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

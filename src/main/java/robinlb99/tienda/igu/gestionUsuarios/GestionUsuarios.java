@@ -27,8 +27,9 @@ public class GestionUsuarios extends javax.swing.JFrame {
         cargarTabla(false, 0, false);
         
         
-        // Acciones - botones -------------------------------
+        /* Botones de acción -------------------------------*/
         
+        // Filtra la tabla de acuerdo al tipo de filtro.
         btnFiltrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,6 +43,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
                     
                     ventana.mensaje("Filtro vacio", "error", "El campo 'Filtro' esta vacio.");
                 } else {
+                    
                     boolean continuar = true;
                     
                     if (cboxTipoFiltro.getSelectedIndex() == 1) {
@@ -98,17 +100,17 @@ public class GestionUsuarios extends javax.swing.JFrame {
             }
         });
         
-        
+        // Borra el filtro en la tabla sin actualizar la tabla desde la base de datos.
         btnBorrarFiltro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cargarTabla(false, 0, true);
+                cargarTabla(false, 0, false);
                 btnBorrarFiltro.setEnabled(false);
                 txtFiltro.setText("");
             }
         });
         
-        
+        // Actualiza la tabla con los datos mas recientes de la base de datos.
         btnActualizarTabla.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -117,12 +119,11 @@ public class GestionUsuarios extends javax.swing.JFrame {
             }
         });
         
-        
+        // Invoca la funcion agregar nuevo usuario.
         btnAgregarUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                // Ingresar a la ventana de agregar usuario.
                 dispose();
                 ventana.agregarUsuario();
                 
@@ -130,7 +131,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
             
         });
         
-        
+        // Invoca la eliminacion del usuario seleccionado.
         btnEliminarUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -139,6 +140,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
                     
                     int idUsuario = Integer.parseInt(dataTable.getValueAt(dataTable.getSelectedRow(), 0).toString());
                     
+                    // Pide confirmacion mediante usuario y contraseña del actual administrador.
                     boolean continuar = ventana.confirmarAccionUsuario(null, true).isConfirm();
                     
                     if (continuar) {
@@ -335,7 +337,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnActualizarTablaActionPerformed
      
-    
+    // Setea los datos en la tabla o los actualiza.
     private void cargarTabla(boolean filtrarTabla, int id, boolean recargarListaUsuarios) {
         // Definir modelo de tabla
         DefaultTableModel tablaModel = new DefaultTableModel() {
