@@ -188,7 +188,7 @@ public class Window {
         Login session = new Login();
         session.setLocationRelativeTo(null);
         session.setResizable(false);
-        session.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+//        session.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         session.pack();
         session.setVisible(true);
     }

@@ -84,11 +84,9 @@ public class ConfirmarAccionUsuario extends javax.swing.JDialog {
                   
                     
                 }
-                
-                
-//                
-                
+                 
             }
+            
         });
         
         btnCancelar.addActionListener(new ActionListener() {
