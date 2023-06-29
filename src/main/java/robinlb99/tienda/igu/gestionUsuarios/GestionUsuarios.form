@@ -41,7 +41,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="818" max="32767" attributes="0"/>
                       <Component id="jLabel1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="btnAgregarUsuario" min="-2" pref="100" max="-2" attributes="0"/>
@@ -54,13 +54,15 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cboxTipoFiltro" min="-2" pref="136" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtFiltro" min="-2" pref="260" max="-2" attributes="0"/>
+                          <Component id="txtFiltro" min="-2" pref="190" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnFiltrar" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnBorrarFiltro" min="-2" pref="130" max="-2" attributes="0"/>
-                          <EmptySpace pref="78" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnActualizarTabla" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -75,12 +77,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel2" max="32767" attributes="0"/>
+                      <Component id="btnActualizarTabla" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtFiltro" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btnFiltrar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btnBorrarFiltro" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="btnActualizarTabla" max="32767" attributes="0"/>
+                      <Component id="cboxTipoFiltro" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" pref="431" max="32767" attributes="0"/>
@@ -102,7 +105,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Gestionar ususarios"/>
+            <Property name="text" type="java.lang.String" value="Gestionar usuarios"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnEliminarUsuario">
@@ -148,7 +151,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Img/buscar-24px.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Filtrar nombre de usuario:"/>
+            <Property name="text" type="java.lang.String" value="Filtrar por:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFiltro">
@@ -198,6 +201,20 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarTablaActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cboxTipoFiltro">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="-"/>
+                <StringItem index="1" value="Usuario"/>
+                <StringItem index="2" value="Cedula"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

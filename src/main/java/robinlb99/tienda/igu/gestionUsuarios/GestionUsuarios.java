@@ -33,34 +33,67 @@ public class GestionUsuarios extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                if (txtFiltro.getText().isBlank()) {
+                if (cboxTipoFiltro.getSelectedIndex() == 0) {
+                    
+                    ventana.mensaje("Filtro invalido", "error", "No se selecciono un tipo de filtro valido");
+                    cboxTipoFiltro.grabFocus();
+                    
+                } else if (txtFiltro.getText().isBlank()) {
+                    
                     ventana.mensaje("Filtro vacio", "error", "El campo 'Filtro' esta vacio.");
                 } else {
+                    boolean continuar = true;
                     
-                    try {
+                    if (cboxTipoFiltro.getSelectedIndex() == 1) {
+                        
+                        try {
                         
                         int a = Integer.parseInt(txtFiltro.getText());
                         
                         ventana.mensaje("Parametro invalido", "error", "El nombre de ususario a filtrar no puede ser un número.");
+                        txtFiltro.grabFocus();
                         
-                    } catch (Exception a) {
+                        } catch (Exception a) {
                         
-                        boolean continuar = true;
-                        for (Usuario user : listaUsuarios) {
-                            if (user.getUsuario().equals(txtFiltro.getText())) {
-                                continuar = false;
-                                cargarTabla(true, user.getId(), true);
-                                btnBorrarFiltro.setEnabled(true);
+                            for (Usuario user : listaUsuarios) {
+                                if (user.getUsuario().equals(txtFiltro.getText())) {
+                                    continuar = false;
+                                    cargarTabla(true, user.getId(), true);
+                                    btnBorrarFiltro.setEnabled(true);
+                                    break;
+                                }
                             }
+                        
                         }
                         
-                        if (continuar) {
-                            ventana.mensaje("Usuario no encontrado", "error", "El usuario a filtrar no ha sido encontrado");
+                    } else if (cboxTipoFiltro.getSelectedIndex() == 2) {
+                        
+                        try {
+                            
+                            long cedula = Long.parseLong(txtFiltro.getText());
+                            
+                            for (Usuario user : listaUsuarios) {
+                                if (user.getCedula().equals(txtFiltro.getText())) {
+                                    continuar = false;
+                                    cargarTabla(true, user.getId(), true);
+                                    btnBorrarFiltro.setEnabled(true);
+                                    break;
+                                }
+                            }
+                            
+                        } catch (Exception u) {
+                            
+                            ventana.mensaje("Parametro invalido", "error", "Verifique el numero de cedula digitado.");
                             txtFiltro.grabFocus();
+                            
                         }
                         
                     }
                     
+                    if (continuar) {
+                        ventana.mensaje("Usuario no encontrado", "error", "El usuario a filtrar no ha sido encontrado");
+                        txtFiltro.grabFocus();
+                    }
                 }
             }
         });
@@ -168,11 +201,12 @@ public class GestionUsuarios extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         dataTable = new javax.swing.JTable();
         btnActualizarTabla = new javax.swing.JButton();
+        cboxTipoFiltro = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Gestionar ususarios");
+        jLabel1.setText("Gestionar usuarios");
 
         btnEliminarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/eliminar-amigo.png"))); // NOI18N
         btnEliminarUsuario.setText("Eliminar");
@@ -193,7 +227,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/buscar-24px.png"))); // NOI18N
-        jLabel2.setText("Filtrar nombre de usuario:");
+        jLabel2.setText("Filtrar por:");
 
         btnFiltrar.setText("Filtrar");
 
@@ -221,6 +255,8 @@ public class GestionUsuarios extends javax.swing.JFrame {
             }
         });
 
+        cboxTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Usuario", "Cedula" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -228,7 +264,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnAgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,13 +276,15 @@ public class GestionUsuarios extends javax.swing.JFrame {
                         .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboxTipoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBorrarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnActualizarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -257,11 +295,12 @@ public class GestionUsuarios extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnActualizarTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnBorrarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnActualizarTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cboxTipoFiltro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -312,7 +351,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         } 
         
         // Establecer los nombres de las columnas
-        String titulos[] = {"ID", "Nombre de Usuario", "Contraseña"};
+        String titulos[] = {"ID", "Cedula", "Nombres", "Apellidos", "Nombre de Usuario", "Contraseña"};
         tablaModel.setColumnIdentifiers(titulos);
 
         if (filtrarTabla) {
@@ -325,7 +364,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
             } else {
 
                 Usuario user = control.buscarUsuario(id);
-                Object[] objeto = {user.getId(), user.getUsuario(), user.getContrasena()};
+                Object[] objeto = {user.getId(), user.getCedula(), user.getNombres(), user.getApellidos(), user.getUsuario(), user.getContrasena()};
                 tablaModel.addRow(objeto);
 
             }
@@ -337,7 +376,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
                 for (Usuario user : listaUsuarios) {
 
-                    Object[] objeto = {user.getId(), user.getUsuario(), user.getContrasena()};
+                    Object[] objeto = {user.getId(), user.getCedula(), user.getNombres(), user.getApellidos(), user.getUsuario(), user.getContrasena()};
                     tablaModel.addRow(objeto);
 
                 }
@@ -359,6 +398,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarUsuario;
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnModificarUsuario;
+    private javax.swing.JComboBox<String> cboxTipoFiltro;
     private javax.swing.JTable dataTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
