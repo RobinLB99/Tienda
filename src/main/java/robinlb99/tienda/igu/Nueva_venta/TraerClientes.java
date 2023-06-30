@@ -267,7 +267,7 @@ public class TraerClientes extends javax.swing.JFrame {
 
         for (Cliente cliente : clientes) {
             // Comparar el valor de la columna deseada con el criterio
-            if (cliente.getCI().equals(criterio)) {
+            if (cliente.getCedula().equals(criterio)) {
                 registrosFiltrados.add(cliente);
             } 
         }
@@ -298,7 +298,7 @@ public class TraerClientes extends javax.swing.JFrame {
                     
                     if (cliente.getConsumidorFinal().equals("No")) {
 
-                        Object[] objeto = {cliente.getId(), cliente.getNombres(), cliente.getApellidos(), cliente.getCI()};
+                        Object[] objeto = {cliente.getId(), cliente.getNombres(), cliente.getApellidos(), cliente.getCedula()};
                         tablaModel.addRow(objeto);
 
                     }

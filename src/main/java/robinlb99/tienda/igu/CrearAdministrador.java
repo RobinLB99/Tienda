@@ -2,6 +2,7 @@ package robinlb99.tienda.igu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import robinlb99.tienda.logica.Empleado;
 import robinlb99.tienda.logica.LogicController;
 import robinlb99.tienda.logica.Usuario;
 
@@ -55,15 +56,20 @@ public class CrearAdministrador extends javax.swing.JFrame {
 
                     if (passwordConfirm.equals(password)) {
                         
+                        Empleado employ = new Empleado();
+                        employ.setNombres(nombres);
+                        employ.setApellidos(apellidos);
+                        employ.setCedula(cedula);
+                        
                         Usuario user = new Usuario();
-                        user.setNombres(nombres);
-                        user.setApellidos(apellidos);
-                        user.setCedula(cedula);
-                        user.setUsuario(usuario);
+                        user.setUserName(usuario);
                         user.setContrasena(password);
                         user.setIsAdministrador(true);
                         
                         control.crearUsuario(user);
+                        
+                        employ.setUsuario(user);
+                        control.crearEmpleado(employ);
                         
                         ventana.mensaje("Usuario creado", "info", "El usuario ha sido creado con exito.");
                         

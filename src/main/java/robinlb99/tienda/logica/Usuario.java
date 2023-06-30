@@ -12,31 +12,22 @@ import javax.persistence.Id;
  */
 @Entity
 public class Usuario implements Serializable {
-
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-    private String cedula;
-    private String nombres;
-    private String apellidos;
-    private String usuario;
+    private String userName;
     private String contrasena;
     private boolean isAdministrador;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String cedula, String nombres, String apellidos, String usuario, String contrasena, boolean isAdministrador) {
+    public Usuario(int id, String userName, String contrasena, boolean isAdministrador) {
         this.id = id;
-        this.cedula = cedula;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.usuario = usuario;
+        this.userName = userName;
         this.contrasena = contrasena;
         this.isAdministrador = isAdministrador;
     }
-
 
     public int getId() {
         return id;
@@ -46,37 +37,12 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-    
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getContrasena() {
@@ -94,15 +60,5 @@ public class Usuario implements Serializable {
     public void setIsAdministrador(boolean isAdministrador) {
         this.isAdministrador = isAdministrador;
     }
-
-    @Override
-    public String toString() {
-        return "Usuario{" + 
-                "id=" + id + 
-                ", usuario=" + usuario + 
-                ", contrasena=" + contrasena + 
-                ", isAdministrador=" + isAdministrador + '}';
-    }
-    
     
 }

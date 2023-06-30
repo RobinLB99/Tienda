@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import robinlb99.tienda.igu.Window;
+import robinlb99.tienda.logica.Empleado;
 import robinlb99.tienda.logica.LogicController;
 import robinlb99.tienda.logica.Usuario;
 
@@ -16,13 +17,13 @@ public class GestionUsuarios extends javax.swing.JFrame {
     
     LogicController control = new LogicController();
     Window ventana = new Window();
-    ArrayList<Usuario> listaUsuarios = null;
+    ArrayList<Empleado> listaEmpleados = null;
 
     public GestionUsuarios() {
         
         initComponents();
         
-        listaUsuarios = control.listaUsuarios();
+        listaEmpleados = control.listaEmpleados();
         
         cargarTabla(false, 0, false);
         
@@ -57,10 +58,10 @@ public class GestionUsuarios extends javax.swing.JFrame {
                         
                         } catch (Exception a) {
                         
-                            for (Usuario user : listaUsuarios) {
-                                if (user.getUsuario().equals(txtFiltro.getText())) {
+                            for (Empleado employ : listaEmpleados) {
+                                if (employ.getUsuario().getUserName().equals(txtFiltro.getText())) {
                                     continuar = false;
-                                    cargarTabla(true, user.getId(), true);
+                                    cargarTabla(true, employ.getId(), true);
                                     btnBorrarFiltro.setEnabled(true);
                                     break;
                                 }
@@ -74,10 +75,10 @@ public class GestionUsuarios extends javax.swing.JFrame {
                             
                             long cedula = Long.parseLong(txtFiltro.getText());
                             
-                            for (Usuario user : listaUsuarios) {
-                                if (user.getCedula().equals(txtFiltro.getText())) {
+                            for (Empleado employ : listaEmpleados) {
+                                if (employ.getCedula().equals(txtFiltro.getText())) {
                                     continuar = false;
-                                    cargarTabla(true, user.getId(), true);
+                                    cargarTabla(true, employ.getId(), true);
                                     btnBorrarFiltro.setEnabled(true);
                                     break;
                                 }
@@ -161,19 +162,19 @@ public class GestionUsuarios extends javax.swing.JFrame {
             }
         });
         
-        
+        // Invoca la accion de modificacion de ususario.
         btnModificarUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
                 if (dataTable.getSelectedRow() != -1) {
                     
-                    int idUser = Integer.parseInt(dataTable.getValueAt(dataTable.getSelectedRow(), 0).toString());
+                    int idEmpleado = Integer.parseInt(dataTable.getValueAt(dataTable.getSelectedRow(), 0).toString());
                     
-                    Usuario user = control.buscarUsuario(idUser);
+                    Empleado employ = control.buscarEmpleado(idEmpleado);
                     
                     dispose();
-                    ventana.modificarUsuario(user);
+                    ventana.modificarUsuario(employ);
                     
                 } else {
                     
@@ -338,7 +339,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarTablaActionPerformed
      
     // Setea los datos en la tabla o los actualiza.
-    private void cargarTabla(boolean filtrarTabla, int id, boolean recargarListaUsuarios) {
+    private void cargarTabla(boolean filtrarTabla, long id, boolean recargarListaUsuarios) {
         // Definir modelo de tabla
         DefaultTableModel tablaModel = new DefaultTableModel() {
             // Filas y columnas no editables.
@@ -349,7 +350,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         };
         
         if (recargarListaUsuarios) {
-            listaUsuarios = control.listaUsuarios();
+            listaEmpleados = control.listaEmpleados();
         } 
         
         // Establecer los nombres de las columnas
@@ -365,8 +366,8 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
             } else {
 
-                Usuario user = control.buscarUsuario(id);
-                Object[] objeto = {user.getId(), user.getCedula(), user.getNombres(), user.getApellidos(), user.getUsuario(), user.getContrasena()};
+                Empleado employ = control.buscarEmpleado(id);
+                Object[] objeto = {employ.getId(), employ.getCedula(), employ.getNombres(), employ.getApellidos(), employ.getUsuario().getUserName(), employ.getUsuario().getContrasena()};
                 tablaModel.addRow(objeto);
 
             }
@@ -374,11 +375,11 @@ public class GestionUsuarios extends javax.swing.JFrame {
         } else {
 
             // Recorrer datos y mostrarlos
-            if (listaUsuarios != null) {
+            if (listaEmpleados != null) {
 
-                for (Usuario user : listaUsuarios) {
+                for (Empleado employ : listaEmpleados) {
 
-                    Object[] objeto = {user.getId(), user.getCedula(), user.getNombres(), user.getApellidos(), user.getUsuario(), user.getContrasena()};
+                    Object[] objeto = {employ.getId(), employ.getCedula(), employ.getNombres(), employ.getApellidos(), employ.getUsuario().getUserName(), employ.getUsuario().getContrasena()};
                     tablaModel.addRow(objeto);
 
                 }

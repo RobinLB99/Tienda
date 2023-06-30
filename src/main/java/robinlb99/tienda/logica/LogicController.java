@@ -105,4 +105,26 @@ public class LogicController {
     }
 
 
+    // Usuario ----------------------------------------------------------------
+    public void crearEmpleado(Empleado employ) {
+        perController.crearEmpleado(employ);
+    }
+
+    public void eliminarEmpleado(long id) {
+        perController.eliminarEmpleado(id);
+    }
+
+    public void editarEmpleado(Empleado employ) {
+        perController.editarEmpleado(employ);
+    }
+
+    public Empleado buscarEmpleado(long id) {
+        return perController.buscarEmpleado(id);
+    }
+
+    public ArrayList<Empleado> listaEmpleados() {
+        List<Empleado> lista = perController.listaEmpleado();
+        ArrayList<Empleado> empleados = new ArrayList(lista);
+        return empleados;
+    }
 }

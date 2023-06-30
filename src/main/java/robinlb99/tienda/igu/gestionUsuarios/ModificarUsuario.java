@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import robinlb99.tienda.igu.Window;
+import robinlb99.tienda.logica.Empleado;
 import robinlb99.tienda.logica.LogicController;
 import robinlb99.tienda.logica.Usuario;
 
@@ -18,14 +19,15 @@ public class ModificarUsuario extends javax.swing.JFrame {
     LogicController control = new LogicController();
 
     Usuario user = null;
+    Empleado employ = null;
     
-    public ModificarUsuario(Usuario usuario) {
-        this.user = usuario;
+    public ModificarUsuario(Empleado employ) {
+        this.employ = employ;
         
         initComponents();
         
-        txtUserName.setText(user.getUsuario());
-        txtPassword.setText(user.getContrasena());
+        txtUserName.setText(employ.getUsuario().getUserName());
+        txtPassword.setText(employ.getUsuario().getContrasena());
         
         boolean tipoUsuario = user.isIsAdministrador();
         
@@ -137,8 +139,11 @@ public class ModificarUsuario extends javax.swing.JFrame {
                         if (cboxTipoUsuario.getSelectedIndex() == 2) {
                             esAdmin = true;
                         }
+                        
+                        
+                        user = employ.getUsuario();
 
-                        user.setUsuario(nameUser);
+                        user.setUserName(nameUser);
                         user.setContrasena(password);
                         user.setIsAdministrador(esAdmin);
 

@@ -8,6 +8,7 @@ import robinlb99.tienda.persistencia.exceptions.NonexistentEntityException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import robinlb99.tienda.logica.Empleado;
 import robinlb99.tienda.logica.Usuario;
 
 public class PersistenceController {
@@ -138,4 +139,36 @@ public class PersistenceController {
         return userJpa.findUsuarioEntities();
     }
 
+    
+    // Empleado
+    EmpleadoJpaController employJpa = new EmpleadoJpaController();
+
+    public void crearEmpleado(Empleado employ) {
+        employJpa.create(employ);
+    }
+
+    public void eliminarEmpleado(long id) {
+        try {
+            employJpa.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(PersistenceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void editarEmpleado(Empleado employ) {
+        try {
+            employJpa.edit(employ);
+        } catch (Exception ex) {
+            Logger.getLogger(PersistenceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Empleado buscarEmpleado(long id) {
+        return employJpa.findEmpleado(id);
+    }
+
+    public List<Empleado> listaEmpleado() {
+        return employJpa.findEmpleadoEntities();
+    }
+    
 }

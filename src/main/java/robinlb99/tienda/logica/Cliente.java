@@ -7,25 +7,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Cliente implements Serializable {
+public class Cliente extends Persona implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nombres;
-    private String apellidos;
     private String consumidorFinal;
-    private String CI;
 
     public Cliente() {
     }
-
-    public Cliente(long id, String nombres, String apellidos, String consumidorFinal, String CI) {
+    
+    public Cliente(String consumidorFinal, long id, String cedula, String nombres, String apellidos) {
+        super(cedula, nombres, apellidos);
         this.id = id;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
         this.consumidorFinal = consumidorFinal;
-        this.CI = CI;
     }
 
     public long getId() {
@@ -36,22 +32,6 @@ public class Cliente implements Serializable {
         this.id = id;
     }
 
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
     public String getConsumidorFinal() {
         return consumidorFinal;
     }
@@ -60,21 +40,11 @@ public class Cliente implements Serializable {
         this.consumidorFinal = consumidorFinal;
     }    
 
-    public String getCI() {
-        return CI;
-    }
-
-    public void setCI(String CI) {
-        this.CI = CI;
-    }
-
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + 
-                ", nombres=" + nombres + 
-                ", apellidos=" + apellidos + 
-                ", consumidorFinal=" + consumidorFinal + 
-                ", CI=" + CI + '}';
+        return "Cliente{" + "consumidorFinal=" + consumidorFinal + '}';
     }
+    
+    
     
 }
