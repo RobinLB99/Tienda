@@ -3,7 +3,6 @@ package robinlb99.tienda.igu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import robinlb99.tienda.logica.Empleado;
 import robinlb99.tienda.logica.VariableDatosUsuario;
 import robinlb99.tienda.logica.LogicController;
 import robinlb99.tienda.logica.Usuario;
@@ -38,24 +37,24 @@ public class Login extends javax.swing.JFrame {
                     
                 } else {
                     
-                    ArrayList<Empleado> empleados = control.listaEmpleados();
+                    ArrayList<Usuario> usuarios = control.listaUsuarios();
                     
                     String usuario = txtNombreUsuario.getText();
                     String password = String.valueOf(txtPassword.getPassword());
                     
-                    for (Empleado employ : empleados) {
+                    for (Usuario user : usuarios) {
                         
-                        if (employ.getUsuario().getUserName().equals(usuario) && employ.getUsuario().getContrasena().equals(password)) {
+                        if (user.getUsuario().equals(usuario) && user.getContrasena().equals(password)) {
                             // Seteo el valor booleano para verificar si es administrador o no.
                             VariableDatosUsuario UserSession = new VariableDatosUsuario();
-                            UserSession.setValor(employ.getUsuario().isIsAdministrador());
+                            UserSession.setValor(user.isIsAdministrador());
                             // Seteo las credenciales del usuario.
-                            UserSession.setNombres(employ.getNombres());
-                            UserSession.setApellidos(employ.getApellidos());
-                            UserSession.setNombreUsuario(employ.getUsuario().getUserName());
-                            UserSession.setPassword(employ.getUsuario().getContrasena());
+                            UserSession.setNombres(user.getNombres());
+                            UserSession.setApellidos(user.getApellidos());
+                            UserSession.setNombreUsuario(user.getUsuario());
+                            UserSession.setPassword(user.getContrasena());
                             
-                            ventana.mensaje("Bienvenido", "info", "Bienvenido " + employ.getUsuario().getUserName());
+                            ventana.mensaje("Bienvenido", "info", "Bienvenido " + user.getUsuario());
                             
                             continuar = false;
                             

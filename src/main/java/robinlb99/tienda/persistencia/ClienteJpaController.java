@@ -6,20 +6,23 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import robinlb99.tienda.logica.Cliente;
 import robinlb99.tienda.persistencia.exceptions.NonexistentEntityException;
 
-/**
- *
- * @author ROBINLB99
- */
+
 public class ClienteJpaController implements Serializable {
 
     public ClienteJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+    
+    public ClienteJpaController() {
+        emf = Persistence.createEntityManagerFactory("robinlb99_Tienda_jar_1.0PU");
+    }
+    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {

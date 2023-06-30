@@ -66,7 +66,7 @@ public class NuevaVenta extends javax.swing.JFrame {
 
                 txtNombre.setText(cliente.getNombres());
                 txtApellidos.setText(cliente.getApellidos());
-                txtCedula.setText(cliente.getCedula());
+                txtCedula.setText(cliente.getCI());
                 
             } else {
                 
@@ -605,14 +605,14 @@ public class NuevaVenta extends javax.swing.JFrame {
 
                     cliente.setNombres("-");
                     cliente.setApellidos("-");
-                    cliente.setCedula("-");
+                    cliente.setCI("-");
                     cliente.setConsumidorFinal("Si");
 
                 } else if (idClienteTomado == 0) {
 
                     cliente.setNombres(txtNombre.getText());
                     cliente.setApellidos(txtApellidos.getText());
-                    cliente.setCedula(txtCedula.getText());
+                    cliente.setCI(txtCedula.getText());
                     cliente.setConsumidorFinal("No");
 
                 }

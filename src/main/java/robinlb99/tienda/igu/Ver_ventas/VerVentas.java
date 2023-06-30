@@ -338,7 +338,7 @@ public class VerVentas extends javax.swing.JFrame {
         if (registroPedidos != null) {
             for (Pedido pedido : registroPedidos) {
 
-                Object[] objeto = {pedido.getId(), pedido.getFecha(), pedido.getCliente().getNombres(), pedido.getCliente().getApellidos(), pedido.getCliente().getCedula(), pedido.getProductos().size() + " productos", pedido.getValorCompra(), pedido.getIsCancel()};
+                Object[] objeto = {pedido.getId(), pedido.getFecha(), pedido.getCliente().getNombres(), pedido.getCliente().getApellidos(), pedido.getCliente().getCI(), pedido.getProductos().size() + " productos", pedido.getValorCompra(), pedido.getIsCancel()};
                 tablaModel.addRow(objeto);
 
             }
@@ -366,7 +366,7 @@ public class VerVentas extends javax.swing.JFrame {
         if (registroPedidos != null) {
             for (Pedido pedido : pedidosFiltrados) {
 
-                Object[] objeto = {pedido.getId(), pedido.getFecha(), pedido.getCliente().getNombres(), pedido.getCliente().getApellidos(), pedido.getCliente().getCedula(), pedido.getProductos().size() + " productos", pedido.getValorCompra(), pedido.getIsCancel()};
+                Object[] objeto = {pedido.getId(), pedido.getFecha(), pedido.getCliente().getNombres(), pedido.getCliente().getApellidos(), pedido.getCliente().getCI(), pedido.getProductos().size() + " productos", pedido.getValorCompra(), pedido.getIsCancel()};
                 tablaModel.addRow(objeto);
 
             }
@@ -383,7 +383,7 @@ public class VerVentas extends javax.swing.JFrame {
             
             for (Pedido pedido : pedidos) {
                 
-                if (pedido.getCliente().getCedula().equals(criterio)) {
+                if (pedido.getCliente().getCI().equals(criterio)) {
                     
                     registroFiltrado.add(pedido);
                     

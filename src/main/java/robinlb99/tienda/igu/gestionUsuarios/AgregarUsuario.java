@@ -3,7 +3,6 @@ package robinlb99.tienda.igu.gestionUsuarios;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import robinlb99.tienda.igu.Window;
-import robinlb99.tienda.logica.Empleado;
 import robinlb99.tienda.logica.LogicController;
 import robinlb99.tienda.logica.Usuario;
 
@@ -54,7 +53,6 @@ public class AgregarUsuario extends javax.swing.JFrame {
                     
                     if (passwordConfirm.equals(password)) {
                         
-                        Empleado employ = new Empleado();
                         Usuario user = new Usuario();
                         
                         int tipoUsuario = cboxTipoUsuario.getSelectedIndex();
@@ -66,30 +64,18 @@ public class AgregarUsuario extends javax.swing.JFrame {
                             esAdmin = false;
                         }
                         
-//                        user.setNombres(nombres);
-//                        user.setApellidos(apellidos);
-//                        user.setCedula(cedula);
-//                        user.setUsuario(userName);
-//                        user.setContrasena(password);
-//                        user.setIsAdministrador(esAdmin);
-
-                        employ.setNombres(nombres);
-                        employ.setApellidos(apellidos);
-                        employ.setCedula(cedula);
-                        
-                        user.setUserName(userName);
+                        user.setNombres(nombres);
+                        user.setApellidos(apellidos);
+                        user.setCedula(cedula);
+                        user.setUsuario(userName);
                         user.setContrasena(password);
                         user.setIsAdministrador(esAdmin);
-                        
                         
                         // Pide confirmacion mediante usuario y contraseña del actual administrador.
                         boolean confirmar = ventana.confirmarAccionUsuario(null, true).isConfirm();
 
                         if (confirmar) {
                             control.crearUsuario(user);
-
-                            employ.setUsuario(user);
-                            control.crearEmpleado(employ);
 
                             ventana.mensaje("Usuario creado", "info", "El usuario ha sido creado con exito.");
 
