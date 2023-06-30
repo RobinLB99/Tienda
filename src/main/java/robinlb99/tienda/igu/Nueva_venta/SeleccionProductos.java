@@ -357,11 +357,6 @@ public class SeleccionProductos extends javax.swing.JFrame {
         btnConfirm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Codigo
-//                System.out.println("Lista de productos actual es: " + listaProductos.toString());
-//                System.out.println("La lista de productos seleccionados es: " + productosSeleccionados.toString());
-                
-//                System.out.println(productosSeleccionados.size());
                 
                 for (ProductoUnidad prod : productosSeleccionados) {
                     

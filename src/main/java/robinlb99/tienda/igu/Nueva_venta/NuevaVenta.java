@@ -39,11 +39,6 @@ public class NuevaVenta extends javax.swing.JFrame {
         
         initComponents();
         
-//        System.out.println("--------------------");
-//        System.out.println("Consumidor final: " + cFinal);
-//        System.out.println("El id tomado es: " + idCTomado);
-//        System.out.println("La lista de productos es:" + listProductos);
-        
         window = new Window();
         
         // Valores predeterminado de inicio.

@@ -16,8 +16,13 @@ import robinlb99.tienda.igu.VerStockProductos.ModificarProducto;
 import robinlb99.tienda.igu.VerStockProductos.NuevoProducto;
 import robinlb99.tienda.igu.VerStockProductos.VerStock;
 import robinlb99.tienda.igu.Ver_ventas.VerVentas;
+import robinlb99.tienda.igu.gestionUsuarios.AgregarUsuario;
+import robinlb99.tienda.igu.gestionUsuarios.ConfirmarAccionUsuario;
+import robinlb99.tienda.igu.gestionUsuarios.GestionUsuarios;
+import robinlb99.tienda.igu.gestionUsuarios.ModificarUsuario;
 import robinlb99.tienda.logica.Cliente;
 import robinlb99.tienda.logica.Producto;
+import robinlb99.tienda.logica.Usuario;
 
 
 public class Window {
@@ -168,6 +173,66 @@ public class Window {
         confirmarAgregadoUnidades.pack();
         confirmarAgregadoUnidades.setVisible(true);
         return confirmarAgregadoUnidades;
+    }
+    
+    public void crearAdministrador() {
+        CrearAdministrador createAdmin = new CrearAdministrador();
+        createAdmin.setLocationRelativeTo(null);
+        createAdmin.setResizable(false);
+        createAdmin.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        createAdmin.pack();
+        createAdmin.setVisible(true);
+    }
+    
+    public void inicioSessionRegistro() {
+        Login session = new Login();
+        session.setLocationRelativeTo(null);
+        session.setResizable(false);
+//        session.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        session.pack();
+        session.setVisible(true);
+    }
+    
+    
+    public void gestionarUsuarios() {
+        GestionUsuarios gestionarUsuarios = new GestionUsuarios();
+        gestionarUsuarios.setLocationRelativeTo(null);
+        gestionarUsuarios.setResizable(false);
+        gestionarUsuarios.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        gestionarUsuarios.pack();
+        gestionarUsuarios.setVisible(true);
+    }
+    
+    
+    public void agregarUsuario() {
+        AgregarUsuario agregarUsuario = new AgregarUsuario();
+        agregarUsuario.setLocationRelativeTo(null);
+        agregarUsuario.setResizable(false);
+        agregarUsuario.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        agregarUsuario.pack();
+        agregarUsuario.setVisible(true);
+    }
+    
+    
+    public ConfirmarAccionUsuario confirmarAccionUsuario(java.awt.Frame parent, boolean modal) {
+        ConfirmarAccionUsuario confirmarUsuario = new ConfirmarAccionUsuario(parent, modal);
+        confirmarUsuario.setLocationRelativeTo(null);
+        confirmarUsuario.setResizable(false);
+        confirmarUsuario.setTitle("Confirmar usuario");
+        confirmarUsuario.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        confirmarUsuario.pack();
+        confirmarUsuario.setVisible(true);
+        return confirmarUsuario;
+    }
+    
+    
+    public void modificarUsuario(Usuario user) {
+        ModificarUsuario modUser = new ModificarUsuario(user);
+        modUser.setLocationRelativeTo(null);
+        modUser.setResizable(false);
+        modUser.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        modUser.pack();
+        modUser.setVisible(true);
     }
     
 }
