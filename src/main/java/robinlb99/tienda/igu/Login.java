@@ -21,6 +21,16 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         
+//        btnVerPassword.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                
+//                txtPassword.
+//                
+//            }
+//        });
+                
+        
         btnEntrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
