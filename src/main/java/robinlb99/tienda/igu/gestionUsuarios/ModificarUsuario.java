@@ -116,7 +116,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
                     ventana.mensaje("Tipo invalido", "error", "El tipo de usuario es invalido.");
                     cboxTipoUsuario.grabFocus();
                     
-                } else if (!String.valueOf(txtPassword.getPassword())
+                } else if (!checkPassword.isSelected() && !String.valueOf(txtPassword.getPassword())
                         .equals(String.valueOf(txtConfirmPassword.getPassword()))) {
                     
                     ventana.mensaje("Contraseñas no coincidentes", "error", "Las contraseñas no coinciden.");
