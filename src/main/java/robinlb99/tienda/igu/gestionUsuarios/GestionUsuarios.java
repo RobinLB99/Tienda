@@ -2,6 +2,7 @@ package robinlb99.tienda.igu.gestionUsuarios;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import robinlb99.tienda.igu.Window;
@@ -377,8 +378,19 @@ public class GestionUsuarios extends javax.swing.JFrame {
             if (listaUsuarios != null) {
 
                 for (Usuario user : listaUsuarios) {
+                    
+                    String[] pw = user.getContrasena().split("");
+                    ArrayList<String> password = new ArrayList<String>();
+                    
+                    for (int i = 0; i <= pw.length; i++) {
+                        if (i <= 2) {
+                            password.add(pw[i]);
+                        } else {
+                            password.add("*");
+                        }
+                    }
 
-                    Object[] objeto = {user.getId(), user.getCedula(), user.getNombres(), user.getApellidos(), user.getUsuario(), user.getContrasena()};
+                    Object[] objeto = {user.getId(), user.getCedula(), user.getNombres(), user.getApellidos(), user.getUsuario(), String.join("", password)};
                     tablaModel.addRow(objeto);
 
                 }
