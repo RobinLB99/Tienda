@@ -367,7 +367,19 @@ public class GestionUsuarios extends javax.swing.JFrame {
             } else {
 
                 Usuario user = control.buscarUsuario(id);
-                Object[] objeto = {user.getId(), user.getCedula(), user.getNombres(), user.getApellidos(), user.getUsuario(), user.getContrasena()};
+                
+                String[] pw = user.getContrasena().split("");
+                ArrayList<String> password = new ArrayList<String>();
+
+                for (int i = 0; i <= pw.length; i++) {
+                    if (i <= 2) {
+                        password.add(pw[i]);
+                    } else {
+                        password.add("*");
+                    }
+                }
+                
+                Object[] objeto = {user.getId(), user.getCedula(), user.getNombres(), user.getApellidos(), user.getUsuario(), String.join("", password)};
                 tablaModel.addRow(objeto);
 
             }
