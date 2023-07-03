@@ -1,7 +1,6 @@
 package robinlb99.tienda.logica;
 
 import robinlb99.tienda.persistencia.PersistenceController;
-import robinlb99.tienda.persistencia.exceptions.NonexistentEntityException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +78,30 @@ public class LogicController {
         List<Producto> lista = perController.listaProductos();
         ArrayList<Producto> productos = new ArrayList<>(lista);
         return productos;
+    }
+    
+    
+    // Usuario ----------------------------------------------------------------
+    public void crearUsuario(Usuario usuario) {
+        perController.crearUsuario(usuario);
+    }
+    
+    public void eliminarUsuario(int id) {
+        perController.eliminarUsuario(id);
+    }
+    
+    public void editarUsuario(Usuario ususario){
+        perController.editarUsuario(ususario);
+    }
+    
+    public Usuario buscarUsuario(int id) {
+        return perController.buscarUsuario(id);
+    }
+    
+    public ArrayList<Usuario> listaUsuarios() {
+        List<Usuario> lista = perController.listaUsuarios();
+        ArrayList<Usuario> usuarios = new ArrayList(lista);
+        return usuarios;
     }
 
 

@@ -7,12 +7,14 @@ import javax.swing.UIManager;
 public class EscogerTemaAplicacion extends javax.swing.JFrame {
     
     Window ventana = new Window();
+    ExisteUsuarioAdministrador existAdmin = null;
 
     /**
      * Creates new form EscogerTemaAplicacion
      */
     public EscogerTemaAplicacion() {
         initComponents();
+        
         
         
         lightTheme.addActionListener( new ActionListener() {
@@ -24,7 +26,7 @@ public class EscogerTemaAplicacion extends javax.swing.JFrame {
                     ventana.mensaje("Error", "error", "No se pudo aplicar el tema de la aplicacion");
                 } finally {
                     dispose();
-                    ventana.menu();
+                    existAdmin = new ExisteUsuarioAdministrador();
                 }
             }
             
@@ -40,7 +42,7 @@ public class EscogerTemaAplicacion extends javax.swing.JFrame {
                     ventana.mensaje("Error", "error", "No se pudo aplicar el tema de la aplicacion");
                 } finally {
                     dispose();
-                    ventana.menu();
+                    existAdmin = new ExisteUsuarioAdministrador();
                 }
             }
 

@@ -6,6 +6,9 @@ import robinlb99.tienda.logica.Producto;
 import robinlb99.tienda.persistencia.exceptions.NonexistentEntityException;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import robinlb99.tienda.logica.Usuario;
 
 public class PersistenceController {
 
@@ -100,6 +103,39 @@ public class PersistenceController {
 
     public List<Producto> listaProductos() {
         return productoJpa.findProductoEntities();
+    }
+    
+    
+    // Usuario
+    
+    UsuarioJpaController userJpa = new UsuarioJpaController();
+    
+    public void crearUsuario(Usuario usuario) {
+        userJpa.create(usuario);
+    }
+    
+    public void eliminarUsuario(int id) {
+        try {
+            userJpa.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(PersistenceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void editarUsuario(Usuario usuario) {
+        try {
+            userJpa.edit(usuario);
+        } catch (Exception ex) {
+            Logger.getLogger(PersistenceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public Usuario buscarUsuario(int id) {
+        return userJpa.findUsuario(id);
+    }
+    
+    public List<Usuario> listaUsuarios() {
+        return userJpa.findUsuarioEntities();
     }
 
 }
