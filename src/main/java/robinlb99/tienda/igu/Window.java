@@ -235,4 +235,15 @@ public class Window {
         modUser.setVisible(true);
     }
     
+    public CambiarContrasena cambiarContrasena(java.awt.Frame parent, boolean modal, String accion) {
+        CambiarContrasena cambioContrasena = new CambiarContrasena(parent, modal, accion);
+        cambioContrasena.setLocationRelativeTo(null);
+        cambioContrasena.setResizable(false);
+        cambioContrasena.setTitle("Confirmar usuario");
+        cambioContrasena.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        cambioContrasena.pack();
+        cambioContrasena.setVisible(true);
+        return cambioContrasena;
+    }
+    
 }

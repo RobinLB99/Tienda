@@ -23,11 +23,13 @@ public class Usuario implements Serializable {
     private String usuario;
     private String contrasena;
     private boolean isAdministrador;
+    private boolean passwordRecuperado;
+    private boolean nuevoUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String cedula, String nombres, String apellidos, String usuario, String contrasena, boolean isAdministrador) {
+    public Usuario(int id, String cedula, String nombres, String apellidos, String usuario, String contrasena, boolean isAdministrador, boolean passwordRecuperado, boolean nuevoUsuario) {
         this.id = id;
         this.cedula = cedula;
         this.nombres = nombres;
@@ -35,6 +37,8 @@ public class Usuario implements Serializable {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.isAdministrador = isAdministrador;
+        this.passwordRecuperado = passwordRecuperado;
+        this.nuevoUsuario = nuevoUsuario;
     }
 
 
@@ -95,14 +99,32 @@ public class Usuario implements Serializable {
         this.isAdministrador = isAdministrador;
     }
 
+    public boolean isPasswordRecuperado() {
+        return passwordRecuperado;
+    }
+
+    public void setPasswordRecuperado(boolean passwordRecuperado) {
+        this.passwordRecuperado = passwordRecuperado;
+    }
+
+    public boolean isNuevoUsuario() {
+        return nuevoUsuario;
+    }
+
+    public void setNuevoUsuario(boolean nuevoUsuario) {
+        this.nuevoUsuario = nuevoUsuario;
+    }
+
     @Override
     public String toString() {
-        return "Usuario{" + 
-                "id=" + id + 
+        return "Usuario{" + "id=" + id + 
+                ", cedula=" + cedula + 
+                ", nombres=" + nombres + 
+                ", apellidos=" + apellidos + 
                 ", usuario=" + usuario + 
                 ", contrasena=" + contrasena + 
-                ", isAdministrador=" + isAdministrador + '}';
+                ", isAdministrador=" + isAdministrador + 
+                ", passwordRecuperado=" + passwordRecuperado + '}';
     }
-    
     
 }

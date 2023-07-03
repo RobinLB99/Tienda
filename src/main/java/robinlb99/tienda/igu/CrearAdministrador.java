@@ -62,6 +62,8 @@ public class CrearAdministrador extends javax.swing.JFrame {
                         user.setUsuario(usuario);
                         user.setContrasena(password);
                         user.setIsAdministrador(true);
+                        user.setPasswordRecuperado(false);
+                        user.setNuevoUsuario(false);
                         
                         control.crearUsuario(user);
                         
