@@ -24,6 +24,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         window = new Window();
         initComponents();
         
+        
         if (esAdministrador) {
             
             btnGestionarUsuarios.setEnabled(true);
@@ -39,6 +40,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         txtUsuario.setText(nombres + " " + apellidos);
         txtTipoUsuario.setText(tipoUsuario);
+        
         
     }
 

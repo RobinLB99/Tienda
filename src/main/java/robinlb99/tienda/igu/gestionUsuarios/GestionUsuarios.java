@@ -2,7 +2,6 @@ package robinlb99.tienda.igu.gestionUsuarios;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import robinlb99.tienda.igu.Window;

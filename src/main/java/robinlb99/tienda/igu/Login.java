@@ -19,17 +19,7 @@ public class Login extends javax.swing.JFrame {
     private boolean continuar = true;
 
     public Login() {
-        initComponents();
-        
-//        btnVerPassword.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                
-//                txtPassword.
-//                
-//            }
-//        });
-                
+        initComponents();                
         
         btnEntrar.addActionListener(new ActionListener() {
             @Override
@@ -57,19 +47,24 @@ public class Login extends javax.swing.JFrame {
                         if (user.getUsuario().equals(usuario) && user.getContrasena().equals(password)) {
                             // Seteo el valor booleano para verificar si es administrador o no.
                             VariableDatosUsuario UserSession = new VariableDatosUsuario();
+                            UserSession.setId(user.getId());
                             UserSession.setValor(user.isIsAdministrador());
                             // Seteo las credenciales del usuario.
                             UserSession.setNombres(user.getNombres());
                             UserSession.setApellidos(user.getApellidos());
                             UserSession.setNombreUsuario(user.getUsuario());
                             UserSession.setPassword(user.getContrasena());
+                            UserSession.setNuevoUsuario(user.isNuevoUsuario());
+                            UserSession.setPasswordRecuperado(user.isPasswordRecuperado());
                             
                             ventana.mensaje("Bienvenido", "info", "Bienvenido " + user.getUsuario());
                             
                             continuar = false;
                             
                             dispose();
-                            ventana.menu();
+                            
+                            NuevoUsuarioRecuperandoContrasena newUserOrNewPassword = new NuevoUsuarioRecuperandoContrasena();
+                            newUserOrNewPassword.nuveoUsuarioRecuperandoContrasena();
                             
                             break;
                             

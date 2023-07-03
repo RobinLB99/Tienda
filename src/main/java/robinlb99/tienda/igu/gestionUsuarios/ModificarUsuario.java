@@ -133,14 +133,20 @@ public class ModificarUsuario extends javax.swing.JFrame {
                         String password = String.valueOf(txtPassword.getPassword());
 
                         boolean esAdmin = false;
+                        boolean esPasswordRecuperado = false;
 
                         if (cboxTipoUsuario.getSelectedIndex() == 2) {
                             esAdmin = true;
+                        }
+                        
+                        if (!checkPassword.isSelected()) {
+                            esPasswordRecuperado = true;
                         }
 
                         user.setUsuario(nameUser);
                         user.setContrasena(password);
                         user.setIsAdministrador(esAdmin);
+                        user.setPasswordRecuperado(esPasswordRecuperado);
 
                         try {
 

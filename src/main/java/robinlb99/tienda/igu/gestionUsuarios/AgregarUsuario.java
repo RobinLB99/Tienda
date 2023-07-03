@@ -70,6 +70,8 @@ public class AgregarUsuario extends javax.swing.JFrame {
                         user.setUsuario(userName);
                         user.setContrasena(password);
                         user.setIsAdministrador(esAdmin);
+                        user.setPasswordRecuperado(false);
+                        user.setNuevoUsuario(true);
                         
                         // Pide confirmacion mediante usuario y contraseña del actual administrador.
                         boolean confirmar = ventana.confirmarAccionUsuario(null, true).isConfirm();
@@ -222,7 +224,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 

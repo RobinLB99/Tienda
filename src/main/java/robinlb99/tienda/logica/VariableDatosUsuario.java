@@ -6,11 +6,22 @@ package robinlb99.tienda.logica;
  */
 public class VariableDatosUsuario {
     
+    public static int id;
     public static String nombres;
     public static String apellidos;
     public static String nombreUsuario;
     public static String contrasena;
     public static boolean esAdministrador;
+    public static boolean passwordRecuperado;
+    public static boolean nuevoUsuario;
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
     
     public void setNombres(String nombre) {
         this.nombres = nombre;
@@ -50,6 +61,22 @@ public class VariableDatosUsuario {
     
     public boolean getValor() {
         return esAdministrador;
+    }
+    
+    public void setPasswordRecuperado(boolean recuperado) {
+        this.passwordRecuperado = recuperado;
+    }
+
+    public boolean getPasswordRecuperado() {
+        return passwordRecuperado;
+    }
+    
+    public void setNuevoUsuario(boolean nuevoUsuario) {
+        this.nuevoUsuario = nuevoUsuario;
+    }
+
+    public boolean getNuevoUsuario() {
+        return nuevoUsuario;
     }
     
 }
