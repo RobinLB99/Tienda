@@ -98,29 +98,25 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace pref="68" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="62" max="32767" attributes="0"/>
                                   <Component id="btnAtras" min="-2" pref="115" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnModificar" min="-2" pref="115" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cboxTipoUsuario" max="32767" attributes="0"/>
-                                      <Component id="jLabel5" max="32767" attributes="0"/>
-                                      <Component id="checkPassword" max="32767" attributes="0"/>
-                                      <Component id="txtConfirmPassword" max="32767" attributes="0"/>
-                                      <Component id="jLabel4" max="32767" attributes="0"/>
-                                      <Component id="txtPassword" max="32767" attributes="0"/>
-                                      <Component id="jLabel3" max="32767" attributes="0"/>
-                                      <Component id="checkNameUser" max="32767" attributes="0"/>
-                                      <Component id="txtUserName" max="32767" attributes="0"/>
-                                      <Component id="jLabel2" max="32767" attributes="0"/>
-                                      <Component id="checkTipoUsuario" alignment="1" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="cboxTipoUsuario" max="32767" attributes="0"/>
+                              <Component id="jLabel5" max="32767" attributes="0"/>
+                              <Component id="checkPassword" max="32767" attributes="0"/>
+                              <Component id="txtConfirmPassword" max="32767" attributes="0"/>
+                              <Component id="jLabel4" max="32767" attributes="0"/>
+                              <Component id="txtPassword" max="32767" attributes="0"/>
+                              <Component id="jLabel3" max="32767" attributes="0"/>
+                              <Component id="checkNameUser" max="32767" attributes="0"/>
+                              <Component id="txtUserName" max="32767" attributes="0"/>
+                              <Component id="jLabel2" max="32767" attributes="0"/>
+                              <Component id="checkTipoUsuario" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -251,17 +247,17 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="checkNameUser">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Modificar nombre de usuario"/>
+                    <Property name="text" type="java.lang.String" value="No modificar el nombre de usuario"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="checkPassword">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Modificar contrase&#xf1;a"/>
+                    <Property name="text" type="java.lang.String" value="No modificar la contrase&#xf1;a"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="checkTipoUsuario">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Modificar tipo de usuario"/>
+                    <Property name="text" type="java.lang.String" value="No modificar el tipo de usuario"/>
                   </Properties>
                 </Component>
               </SubComponents>
